@@ -1,0 +1,10 @@
+<div class="jira-ticket" (click)="goToLink();" style="{{customStyle}}">
+	<div>
+		<div class="jira-key">{{jiraData.key}}</div>
+		<div class="assignee">{{getValue(["fields", "assignee", "displayName"])}}</div>
+	</div>
+	<div style="clear:both"></div>
+	<div>
+		{{jiraData.fields.summary}}
+	</div>	
+</div>

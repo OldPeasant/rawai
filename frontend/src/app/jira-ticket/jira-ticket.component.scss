@@ -1,0 +1,20 @@
+.jira-ticket {
+	width:250px;
+	word-wrap: break-word;
+	background-color: #FFFFFF;
+	border: 1px solid #808080;
+	margin: 3px;
+	padding: 3px;
+	cursor: pointer;
+}
+
+.jira-key {
+	float: left;
+	padding-bottom: 5px;
+	font-weight: bold;
+}
+
+
+.assignee {
+	float: right;
+}

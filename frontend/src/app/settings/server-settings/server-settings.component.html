@@ -1,0 +1,29 @@
+<table>
+	<tr>
+		<th>Host</th>
+		<td><input type="text" [(ngModel)]="host"></td>
+	</tr>
+	<tr>
+		<th>Board</th>
+		<td><input type="text" [(ngModel)]="board"></td>
+	</tr>
+	<tr>
+		<th>Project</th>
+		<td><input type="text" [(ngModel)]="project"></td>
+	</tr>
+	<tr>
+		<th>Label</th>
+		<td><input type="text" [(ngModel)]="label"></td>
+	</tr>
+	<tr>
+		<th>Jira Link Prefix</th>
+		<td><input type="text" [(ngModel)]="jiraLinkPrefix"></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td align="right">
+			<button (click)="cancel()">Cancel</button>
+			<button (click)="save()">Save</button>
+		</td>
+	</tr>
+<table>

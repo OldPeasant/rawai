@@ -1,0 +1,37 @@
+<div>
+	<div (click)="loadData();" class="toolbar-button"><img src="/img/refresh-double.svg"/></div>
+	<div class="reload-timestamp">{{reloadTimestamp}}</div>
+</div>
+
+<div *ngFor="let svm of sprintViewModels" class="all-sprints-container">
+	<h1>{{svm.title}}</h1>
+	<div *ngIf="svm.unclassifiedJiras.length > 0" class="lane" style="margin-bottom: 20px;">
+		<h2>Nicht klassifiziert</h2>
+		<span class="warning">Achtung: Nicht alle Jira Tickets konnten den Spalten zugeordnet werden.<br/>
+		Bitte überprüfen sie die <a routerLink="/settings/classification">Zuordnungsregeln</a>!
+		</span>
+		<br>
+		<app-jira-ticket [jiraData]="j"  *ngFor="let j of svm.unclassifiedJiras"/>
+	</div>
+	<div style="clear:both"></div>
+	<div class="lanes-container">
+		<div *ngFor="let lane of svm.lanes" class="lane">
+			<h2>{{lane.label}}</h2>
+			<app-jira-ticket
+				[jiraData]="j" 
+				*ngFor="let j of lane.jiras" 
+				[highlightIfNotAssigned]="lane.highlightIfNotAssigned"
+				[highlightIfNotAssignedStyle]="lane.highlightIfNotAssignedStyle"
+				[highlightAll]="lane.highlightAll"
+				[highlightAllStyle]="lane.highlightAllStyle"
+				
+				/>
+			
+			<span class="no-items-in-lane" *ngIf="lane.jiras.length == 0">
+				<i>No Jiras in '{{lane.label}}'</i>
+			</span>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="hourglassVisible" class="lds-hourglass"></div>

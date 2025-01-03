@@ -1,0 +1,23 @@
+<style>
+
+</style>
+
+<div class="toolbar" style="display:flex">
+	<a href="/"><img src="/img/r.png" style="margin-top:4px;"/></a>
+	<div style="padding-top:20px;padding-left:10px;">{{getTitleText()}}</div>
+	<div style="flex-grow:1;">&nbsp;</div>
+	<div class="toolbar-button">
+		<button mat-button [matMenuTriggerFor]="menu"><img src="/img/flower.svg"/></button>
+		
+	</div>
+</div>
+
+
+<mat-menu #menu="matMenu" class="menu-custom-style">
+  <button mat-menu-item (click)="goToSettingsServer()">Server</button>
+  <button mat-menu-item (click)="goToSettingsToken()">Token</button>
+  <button mat-menu-item (click)="goToSettingsClassification()">Classification</button>
+</mat-menu>
+
+
+<router-outlet />
