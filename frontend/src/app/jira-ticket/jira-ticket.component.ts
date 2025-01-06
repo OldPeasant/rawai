@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { NgFor, NgIf } from '@angular/common';
 import { Settings } from '../settings';
 
 @Component({
   selector: 'app-jira-ticket',
-  imports: [],
+  imports: [ NgIf ],
   templateUrl: './jira-ticket.component.html',
   styleUrl: './jira-ticket.component.scss'
 })

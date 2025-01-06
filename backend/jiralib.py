@@ -5,7 +5,7 @@ class JiraLib:
         self.server = server
         headers = JIRA.DEFAULT_OPTIONS["headers"].copy()
         headers["Authorization"] = f"Bearer {token}"
-        self.jira = JIRA(server=self.server.host, options={"headers": headers})
+        self.jira = JIRA(server=self.server['host'], options={"headers": headers})
 
     def get_active_sprints(self):
         act = []
@@ -29,4 +29,7 @@ class JiraLib:
 
     # ToDo test if this works
     def get_all_statuses(self):
-        return self.jira.statuses()
+        result = []
+        for s in self.jira.statuses():
+            result.append( [ s.id, s.name ] )
+        return result

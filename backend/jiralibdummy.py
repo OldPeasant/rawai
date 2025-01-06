@@ -34,6 +34,12 @@ class JiraLib:
         time.sleep(0.2)
         return {
                 '1' : [
+                    {'id' : 998, 'key': "NN2-998", 'fields':{
+                        'labels': ['review', 'test'],
+                        'assignee' : {'displayName' : 'Homer Simpson'},
+                        'summary' : "It's in review and in test",
+                        'status': {'id' : '1'}
+                    }},
                     {'id' : 1001, 'key': "NN2-1001", 'fields':{
                         'labels': [],
                         'assignee' : {'displayName' : 'Homer Simpson'},

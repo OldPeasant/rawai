@@ -1,7 +1,12 @@
 <div class="jira-ticket" (click)="goToLink();" style="{{customStyle}}">
 	<div>
 		<div class="jira-key">{{jiraData.key}}</div>
-		<div class="assignee">{{getValue(["fields", "assignee", "displayName"])}}</div>
+		<div *ngIf="getValue(['fields', 'assignee', 'displayName'])" class="assignee">
+			<img
+				src="{{getValue(['fields', 'assignee', 'avatarUrls', '24x24'])}}"
+				alt="getValue(['fields', 'assignee', 'displayName'])"
+			/>
+		</div>
 	</div>
 	<div style="clear:both"></div>
 	<div>
