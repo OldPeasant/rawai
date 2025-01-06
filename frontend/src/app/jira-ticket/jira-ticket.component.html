@@ -4,7 +4,7 @@
 		<div *ngIf="getValue(['fields', 'assignee', 'displayName'])" class="assignee">
 			<img
 				src="{{getValue(['fields', 'assignee', 'avatarUrls', '24x24'])}}"
-				alt="getValue(['fields', 'assignee', 'displayName'])"
+				alt="{{getValue(['fields', 'assignee', 'displayName'])}}"
 			/>
 		</div>
 	</div>
