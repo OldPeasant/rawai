@@ -11,6 +11,6 @@ export class StatusService {
   constructor(private httpClient: HttpClient) { }
   
   getStatuses() : Observable<any> {
-  	return this.httpClient.get("http://localhost:5000/read-statuses");
+  	return this.httpClient.get("http://localhost:4201/read-statuses");
   }
 }

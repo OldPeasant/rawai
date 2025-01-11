@@ -1,4 +1,4 @@
-import { ClassificationModel } from './classification-model';
+import { ClassificationModel, DUMMY_LANE } from './classification-model';
 
 export class SprintViewModel {
 
@@ -37,7 +37,9 @@ export class SprintViewModel {
 		}
 		for (let j of allJiras) {
 			var lane = classificationModel.getLane(j);
-			if (lane == null) {
+			if (lane == DUMMY_LANE) {
+				// ignore, don't show this Jira
+			} else if (lane == null) {
 				this.unclassifiedJiras.push(j);
 			} else {
 				jirasByLaneId[lane.id].push(j);

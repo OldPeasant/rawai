@@ -1,4 +1,40 @@
 
+
+export class Lane {
+	id: string;
+	label: string;
+	showIfEmpty : boolean;
+	highlightIfNotAssigned : boolean;
+	highlightIfNotAssignedStyle : string;
+	highlightAll: boolean;
+	highlightAllStyle: string;
+	
+	constructor(json: any) {
+		this.id = "" + json.id;
+		this.label = json.label;
+		this.showIfEmpty = json.showIfEmpty;
+		this.highlightIfNotAssigned = json.highlightIfNotAssigned;
+		this.highlightIfNotAssignedStyle = json.highlightIfNotAssignedStyle;
+		this.highlightAll = json.highlightAll;
+		this.highlightAllStyle = json.highlightAllStyle;
+		console.info("Loading lane: " + this.highlightIfNotAssignedStyle );
+	}
+	
+	toJson() {
+		return {
+			"id": this.id,
+			"label": this.label,
+			"showIfEmpty": this.showIfEmpty,
+			"highlightIfNotAssigned": this.highlightIfNotAssigned,
+			"highlightIfNotAssignedStyle" : this.highlightIfNotAssignedStyle,
+			"highlightAll" : this.highlightAll,
+			"highlightAllStyle" : this.highlightAllStyle
+		}
+	}
+}
+
+export var DUMMY_LANE = new Lane({})
+
 export class ClassificationModel {
 	lanes: Lane[] = [];
 	classificationRules : ClassificationRule[] = [];
@@ -15,13 +51,17 @@ export class ClassificationModel {
 		}
 	}
 	
-	getLaneById(laneId: number): Lane {
+	getLaneById(laneId: string): Lane {
+		if (laneId == "") {
+			return DUMMY_LANE
+		}
 		for (let lane of this.lanes) {
+			
 			if (lane.id == laneId) {
-				return lane;
+				return lane
 			}
 		}
-		return new Lane({"id": -1, "label": "no lane"});
+		return new Lane({"id": -1, "label": "no lane"})
 	}
 	
 	toJson():any {
@@ -52,42 +92,9 @@ export class ClassificationModel {
 	}
 }
 
-export class Lane {
-	id: number;
-	label: string;
-	showIfEmpty : boolean;
-	highlightIfNotAssigned : boolean;
-	highlightIfNotAssignedStyle : string;
-	highlightAll: boolean;
-	highlightAllStyle: string;
-	
-	constructor(json: any) {
-		this.id = json.id;
-		this.label = json.label;
-		this.showIfEmpty = json.showIfEmpty;
-		this.highlightIfNotAssigned = json.highlightIfNotAssigned;
-		this.highlightIfNotAssignedStyle = json.highlightIfNotAssignedStyle;
-		this.highlightAll = json.highlightAll;
-		this.highlightAllStyle = json.highlightAllStyle;
-		console.info("Loading lane: " + this.highlightIfNotAssignedStyle );
-	}
-	
-	toJson() {
-		return {
-			"id": this.id,
-			"label": this.label,
-			"showIfEmpty": this.showIfEmpty,
-			"highlightIfNotAssigned": this.highlightIfNotAssigned,
-			"highlightIfNotAssignedStyle" : this.highlightIfNotAssignedStyle,
-			"highlightAll" : this.highlightAll,
-			"highlightAllStyle" : this.highlightAllStyle
-		}
-	}
-}
-
 export class ClassificationRule {
 	conditions : Condition[] = [];
-	laneId: number = -1;
+	laneId: string = "";
 	
 	constructor(json: any) {
 		this.laneId = json.laneId;

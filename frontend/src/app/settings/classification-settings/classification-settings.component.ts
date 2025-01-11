@@ -65,11 +65,11 @@ export class ClassificationSettingsComponent implements OnInit {
 	addLane() {
 		var maxIndex = 0;
 		for (let l of this.classificationModel.lanes) {
-			if (l.id > maxIndex) {
-				maxIndex = l.id;
+			if (parseInt(l.id) > maxIndex) {
+				maxIndex = parseInt(l.id);
 			}
 		}
-		this.classificationModel.lanes.push(new Lane({'id': (maxIndex + 1), 'label' : 'New lane', 'showIfEmpty' : false}));
+		this.classificationModel.lanes.push(new Lane({'id': "" + (maxIndex + 1), 'label' : 'New lane', 'showIfEmpty' : false}));
 	}
 	
 	deleteLane(lane: Lane) {

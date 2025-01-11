@@ -6,11 +6,11 @@
 		<input type="checkbox" [(ngModel)]="lane.showIfEmpty"/>Show if emtpy
 		<br/>
 		<input type="checkbox" [(ngModel)]="lane.highlightIfNotAssigned"/>Highlight Jira if not assigned
-		&nbsp:style=
+		&nbsp;style=
 		<input type="text" [(ngModel)]="lane.highlightIfNotAssignedStyle"/>
 		<br/>
 		<input type="checkbox" [(ngModel)]="lane.highlightAll"/>Highlight all Jiras
-		&nbsp:style=
+		&nbsp;style=
 		<input type="text" [(ngModel)]="lane.highlightAllStyle"/>
 		
 		<div class="lane-controls">
@@ -43,6 +43,7 @@
 			then pick lane
 			&nbsp; 
 			<select [(ngModel)]="classificationRule.laneId">
+				<option value="">-- no lane --</option>
 				<option *ngFor="let l of classificationModel.lanes" [ngValue]="l.id">{{l.label}}</option>
 			</select>
 			<br/>

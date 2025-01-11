@@ -12,11 +12,11 @@ export class QueryService {
   constructor(private httpClient: HttpClient) { }
   
   getActiveSprints(): Observable<any> {
-    return this.httpClient.get("http://localhost:5000/read-active-sprints");
+    return this.httpClient.get("http://localhost:4201/read-active-sprints");
   }
   
   getJirasInSprint(sprintId: any): Observable<any> {
-    return this.httpClient.get("http://localhost:5000/read-jiras/" + sprintId);
+    return this.httpClient.get("http://localhost:4201/read-jiras/" + sprintId);
   }
   
 }

@@ -1,4 +1,5 @@
 import sys
+import urllib.request
 
 from flask import Flask, request, jsonify, send_from_directory, redirect
 from flask_cors import CORS, cross_origin
@@ -31,7 +32,7 @@ def init_lib(jira_lib):
     cfg_server = config.get_server_info()
     cfg_token = config.get_token()
     if cfg_server and cfg_token:
-        jira_lib.initialize(cfg_server, cfg_token)
+        jira_lib.initialize(cfg_server, cfg_token['token'])
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -123,5 +124,5 @@ if __name__ == '__main__':
         rawai_dir = expanduser(config_path)
         mkdir(rawai_dir, mode=0o777)
     init_lib(jira_lib)
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port='4201')
 

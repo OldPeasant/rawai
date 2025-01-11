@@ -12,11 +12,11 @@ export class TokenSettingsService {
 
 
   getToken(): Observable<any> {
-	return this.httpClient.get("http://localhost:5000/settings/get-token", {headers: this.headers});
+	return this.httpClient.get("http://localhost:4201/settings/get-token", {headers: this.headers});
   }
   
   saveToken(token: string): Observable<any> {
   	var json = {"token": token}
-  	return this.httpClient.post("http://localhost:5000/settings/set-token", json, {headers: this.headers} );
+  	return this.httpClient.post("http://localhost:4201/settings/set-token", json, {headers: this.headers} );
   }
 }

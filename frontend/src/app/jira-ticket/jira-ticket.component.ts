@@ -46,6 +46,10 @@ export class JiraTicketComponent {
 		return v;
 	}
 	
+	firstName(name: string) {
+		return name.substring(0, name.indexOf(' '));
+	}
+
 	goToLink(){
 		var jlp:string = Settings.server.jiraLinkPrefix;
 		if (! jlp.endsWith("/")) {

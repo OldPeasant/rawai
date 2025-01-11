@@ -13,10 +13,10 @@ export class ServerSettingsService {
   constructor(private httpClient: HttpClient) { }
 
   getServerSettings(): Observable<any> {
-	return this.httpClient.get("http://localhost:5000/settings/get-server-info");
+	return this.httpClient.get("http://localhost:4201/settings/get-server-info");
   }
 
   saveServerSettings(json: any): Observable<any> {
-    return this.httpClient.post("http://localhost:5000/settings/set-server-info", json, {headers: this.headers} );
+    return this.httpClient.post("http://localhost:4201/settings/set-server-info", json, {headers: this.headers} );
   }
 }
